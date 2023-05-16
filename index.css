@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Montserrat:wght@300&display=swap');
+
+
+.rect {
+   transition: all 1s ease-in-out;
+
+}
+.rect:hover {
+    fill: #ADD8E6;
+    transition: all 1s ease-in-out;
+
+
+}
+#top-heading {
+    font-family: 'Lato',sans-serif;
+    font-weight: 400;
+}
