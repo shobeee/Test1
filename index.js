@@ -22,8 +22,10 @@ const fitnessData = [
     // Add more countries and percentages as needed
   ];
 
-  const width = 700;
-  const height = 500;
+
+
+  const width = 600;
+  const height = 300;
 
   const padding = {
     top:20,
@@ -32,15 +34,16 @@ const fitnessData = [
     right:30
   }
 
-  const svg = d3.select('body')
+  const svg = d3.select('.container1')
   .append('svg')
   .attr('width',width+padding.left+padding.right)
   .attr('height',height+padding.top+padding.bottom)
   .style('background-color','white')
   .style('margin','4rem')
+  .attr('id','svg')
 
-  d3.select('body')
-  .style('background-color','white')
+  d3.select('.container1')
+  .style('background-image',`url('./images/pic1.jpg')`);
 
 
   const xScale = d3.scaleBand()
@@ -143,13 +146,67 @@ svg.selectAll('.country-label')
   .attr('text-anchor', 'middle')
   .attr('fill', 'black');
 
+const btn = d3.select('.btn')
+btn
+.on('click',function(e){
+btn.html()==='Show Map'?btn.html(`Hide Map`)&&svg.style('display','block') :btn.html(`Show Map`)&& svg.style('display','none');
+
+
+  })
+
+  let index = 0;
+ d3.select(".changeBtn")
+ .on('click',function(e){
+    d3.select('body')
+    .style(`background-image`,()=>{
+     
+            const str = `url('./images/${[index]}.jpg')`
+         index === 9?index = 0:index++
+        //  return str
+        return str
+    })
+ })
+
+
+// let value = ""
+//  d3.select('.CtryInput')
+// .on('input',(event)=>{
+//   return  value = event.target.value; 
+// })
+const input = document.querySelector('.CtryInput');
+let country = "";
+
+input.addEventListener('input', function() {
+  country = this.value;
+
+});
+const percent = document.querySelector('.PercentInput');
+let percentValue ="";
+percent.addEventListener('input',function() {
+    percentValue = this.value;
+    
+})
+
+const submitInput = document.querySelector('.inputSubmit');
+submitInput.addEventListener('click',function(){
+const arr = [];
+arr.push(country);
+arr.push(percentValue);
+fitnessData.push(arr)
+})
+
+
+console.log(fitnessData)
+
+
+ 
 
 
 
 
 
 
-  console.log(yScale(fitnessData[5][1]))
+
 
   
   
